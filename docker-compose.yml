@@ -1,0 +1,17 @@
+# Use root/example as user/password credentials
+version: '3.2'
+
+services:
+
+  db:
+    image: postgres
+    restart: always
+    container_name: db
+    environment:
+      POSTGRES_PASSWORD: secret1234
+      POSTGRES_USER: jsaad
+      POSTGRES_DB: nestjs
+    ports:
+      - 5432:5432
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
